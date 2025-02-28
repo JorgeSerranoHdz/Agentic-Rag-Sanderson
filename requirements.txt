@@ -1,0 +1,12 @@
+crewai==0.28.1
+langchain==0.1.10
+langchain-openai==0.0.5
+openai==1.13.3
+ebooklib==0.18
+beautifulsoup4==4.12.2
+pypdf==3.17.1
+faiss-cpu==1.7.4
+chromadb==0.4.22
+tqdm==4.66.1
+python-dotenv==1.0.0
+tiktoken>=0.5.0 
