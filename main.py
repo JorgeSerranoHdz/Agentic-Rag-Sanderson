@@ -6,10 +6,8 @@ from vector_store import VectorStore
 from sanderson_agents import SandersonAgents
 from crewai import Crew
 
-# load env vars
 load_dotenv()
 
-# need this to run anything
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     print("Error: OPENAI_API_KEY not found in environment variables.")
@@ -47,13 +45,13 @@ class SandersonRAG:
         reading_agent = self.agents.create_reading_history_agent()
         reading_task = self.agents.create_reading_history_task(reading_agent)
         
-        # TODO: maybe add a way to save reading history for returning users?
+        # TODO: añadir historial de lecturas x usuario?
         reading_crew = Crew(
             agents=[reading_agent],
             tasks=[reading_task],
             verbose=True)
         
-        # let it run
+        # run
         result = reading_crew.kickoff()
         
         # clean up the results - split by comma and strip whitespace
@@ -107,7 +105,6 @@ def main():
     print("Welcome to the Brandon Sanderson RAG System!")
     print("This system will help you explore Brandon Sanderson's books without spoilers.")
     
-    # fire up the system
     rag = SandersonRAG()
     
     # first run needs to process books - can take a while
@@ -138,7 +135,6 @@ def main():
             
         rag.answer_question(question)
 
-# run the main function if this is the main script
 if __name__ == "__main__":
     main()
 
